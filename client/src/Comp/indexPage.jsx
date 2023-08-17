@@ -1,14 +1,24 @@
-import Post from "./post"
+import Post from "./Post"
+import { useEffect, useState } from "react";
+import axios from "axios";
 
-function indexPage ()  {
+const IndexPage =  ()=>{
+  const [posts, setPosts] = useState([]);
+
+  useEffect(()=>{
+    axios.get('http://localhost:5000/post').then((res)=>{
+      setPosts(res.data);
+    })
+  }, []);
+
   return (
-    <div>
-      <Post />
-      <Post />
-      <Post />
-      <Post />
-    </div>
+    <>
+    {posts.length > 0 && posts.map(post=>(
+      <Post {...post}/>
+      ))
+    }
+    </>
   );
 }
 
-export default indexPage;
+export default IndexPage;

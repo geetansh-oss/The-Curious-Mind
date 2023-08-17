@@ -1,28 +1,27 @@
-const post = () => {
+import {format} from "date-fns";
+import { Link } from "react-router-dom";
+
+const Post = ({_id, title, cover, createdAt, author}) => {
   return (
     <div className="post">
       <div className="image">
-        <img
-          src="https://cdn.pixabay.com/photo/2023/07/03/12/48/hoi-an-8104131_1280.jpg"
-          alt="picture"
-        />
+        <Link to={`/post/${_id}`}>
+          <img src={"http://localhost:5000/" + cover} alt="picture" />
+        </Link>
       </div>
       <div className="content">
-        <h2>Adani Enterprises may exit $6 billion Wilmar venture: Report</h2>
+        <Link to={`/post/${_id}`}>
+          <h2>{title}</h2>
+        </Link>
         <p className="info">
           <a href="" className="author">
-            Reuters
+            {author.userName}
           </a>
-          <time>2023</time>
-        </p>
-        <p className="summary">
-          Hoi An is a city on the central coast of Vietnam and is a
-          well-preserved example of the important Southeast Asian trading port
-          it was during the 15th-19th centuries.
+          <time>{format(new Date(createdAt), "MMM d, yyyy")}</time>
         </p>
       </div>
     </div>
   );
 }
 
-export default post
+export default Post

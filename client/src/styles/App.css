@@ -53,3 +53,7 @@ div.post p.summary{
   margin: 10px 0;
   line-height: 1.4rem;
 }
+
+button#posts{
+  margin-top: 5px;
+}

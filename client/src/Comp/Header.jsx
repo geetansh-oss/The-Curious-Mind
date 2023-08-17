@@ -4,6 +4,7 @@ import axios from "axios";
 import { UserContext } from "../context/UserContext";
 
 const Header = () => {
+
   const {setUserInfo, userInfo} = useContext(UserContext);
   useEffect(() => {
     axios.get("http://localhost:5000/profile", {
@@ -26,7 +27,9 @@ const Header = () => {
         allCookies[i] + "=;expires=" + new Date(0).toUTCString();
     setUserInfo(null);
   }
+
   const UserName = userInfo?.data?.userName;
+  
   return (
     <header>
       <Link to="/" className="logo">
@@ -35,7 +38,7 @@ const Header = () => {
       <nav>
         {UserName&& (
           <>
-            <Link to="/create">create</Link>
+            <Link to="/CreatePost">create</Link>
             <a onClick={logout}>Logout</a>
           </>
         )}
