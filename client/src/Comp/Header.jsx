@@ -12,7 +12,7 @@ const Header = () => {
       })
       .then((userInfo) => {
         setUserInfo(userInfo);
-      });
+      }).catch(()=>{});
   }, []);
 
   const logout = ()=>{
@@ -29,16 +29,17 @@ const Header = () => {
   }
 
   const UserName = userInfo?.data?.userName;
-  
+
   return (
     <header>
       <Link to="/" className="logo">
-        MyBlog
+        <div className="brandLogo">The Curious Mind</div>
       </Link>
       <nav>
-        {UserName&& (
+        {UserName && (
           <>
             <Link to="/CreatePost">create</Link>
+            <Link to={`/profile/${userInfo.data.id}`}>Profile</Link>
             <a onClick={logout}>Logout</a>
           </>
         )}

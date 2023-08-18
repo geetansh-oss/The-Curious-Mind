@@ -21,13 +21,15 @@ const CreatePost = () => {
     data.set('file', files[0]);
     await axios.post('http://localhost:5000/createPost',data,{
       withCredentials : "include",
-    }).then((res)=>{
+    }).then(()=>{
       setRedirect(true);
     });
   }
+
   if (redirect) {
     return <Navigate to={"/"} />;
   }
+  
   return (
     <>
       <form onSubmit={createNewPost}>

@@ -7,6 +7,7 @@ import { Route, Routes } from "react-router-dom";
 import { UserContextProvider } from "./context/UserContext";
 import CreatePost from "./Comp/CreatePost";
 import PostFull from "./Comp/PostFull";
+import Profile from "./Comp/Profile";
 
 
 function App() {
@@ -17,8 +18,9 @@ function App() {
           <Route index element={<IndexPage />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
-          <Route path="/CreatePost" element={<CreatePost/>}/>
-          <Route path="/post/:id" element={<PostFull/>}/>
+          <Route path="/CreatePost" element={<CreatePost />} />
+          <Route path="/profile/:id" element={<Profile />} />
+          <Route path="/post/:id" element={<PostFull />} />
         </Route>
       </Routes>
     </UserContextProvider>
